@@ -1,0 +1,14 @@
+<div>
+    <h3>Add An Address</h3>
+    <a routerLink="/address/create">Create Address</a>
+</div>
+<br>
+<div>
+    <h3>My Addresses</h3>
+    <div class="results--group">
+        <div class="center-align links" *ngFor="let address of userAddresses">
+            <a routerLink="/address/{{address._id}}">{{address.streetName}}</a>
+            <button mat-flat-button class='btn btn--square warn' (click)="deleteAddress(address._id)">X</button>
+        </div>
+    </div>
+</div>

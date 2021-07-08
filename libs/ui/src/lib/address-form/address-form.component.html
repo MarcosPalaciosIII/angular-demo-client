@@ -1,0 +1,70 @@
+<div class="form--form-container">
+    <form [formGroup]="addressForm">
+        <div class="form-container form">
+            <div class="form-group">
+                <mat-form-field appearance="fill" class="mat-form-field">
+                    <mat-label>House Number</mat-label>
+                    <input matInput type="text" formControlName="houseNumber" placeholder="1234">
+                    <mat-error>Please Enter a Valid House Number</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="mat-form-field">
+                    <mat-label>Apt. Number</mat-label>
+                    <input matInput type="text" formControlName="aptNumber" placeholder="A34">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" class="mat-form-field">
+                    <mat-label>Street Address</mat-label>
+                    <input matInput type="text" formControlName="streetName" placeholder="NW 12th Ave.">
+                    <mat-error>Please Enter a Valid Street Address</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="mat-form-field">
+                    <mat-label>City</mat-label>
+                    <input matInput type="text" formControlName="city" placeholder="Boca Raton">
+                    <mat-error>City Name is Required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" class="mat-form-field">
+                    <mat-label>State</mat-label>
+                    <input matInput type="text" formControlName="state" placeholder="Florida">
+                    <mat-error>Please Enter a Valid State</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="mat-form-field">
+                    <mat-label>Zip</mat-label>
+                    <input matInput type="text" formControlName="zip" placeholder="33454">
+                    <mat-error>Zipcode is Required</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <br>
+        <div class="address-actions">
+            <button 
+                *ngIf="!data; else update"
+                mat-raised-button
+                color="primary"
+                type="button"
+                class="btn btn-block btn-uppercase"
+                [disabled]="processing"
+                (click)="submit(formSubmitMethod.Create)"
+                >
+                Add Address
+            </button>
+            <ng-template #update>
+                <button 
+                    mat-raised-button
+                    color="primary"
+                    type="button"
+                    class="btn btn-block btn-uppercase"
+                    [disabled]="processing"
+                    (click)="submit(formSubmitMethod.Update)"
+                    >
+                    Update Address
+                </button>
+            </ng-template>
+            
+            <mat-progress-bar mode="indeterminate" *ngIf='processing'></mat-progress-bar>
+        </div>
+        <mat-error class="form-error">{{error}}</mat-error>
+    </form>
+</div>

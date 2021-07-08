@@ -1,0 +1,6 @@
+$primary-color: #143055;
+
+@function calcRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+}

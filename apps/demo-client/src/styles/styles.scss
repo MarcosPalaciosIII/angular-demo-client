@@ -1,0 +1,165 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$demo-client-primary: mat.define-palette(mat.$indigo-palette);
+$demo-client-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$demo-client-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$demo-client-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $demo-client-primary,
+            accent: $demo-client-accent,
+            warn: $demo-client-warn,
+        ),
+    )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($demo-client-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import './abstracts/mixins.scss', './abstracts/variables.scss';
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+
+    h1 {
+        text-align: center;
+        font-size: 4rem;
+    }
+}
+
+header {
+    background-color: #143055;
+    color: white;
+    padding: calcRem(5px);
+    border-radius: calcRem(3px);
+
+    &.flex {
+        @include center-content;
+
+        h1 {
+            margin: calcRem(5px) 0;
+        }
+    }
+}
+
+nav {
+    div {
+        &.nav {
+            &--container {
+                height: 3vw;
+                background-color: lightslategray;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+        }
+    }
+}
+
+button {
+    &.btn {
+        @include center-content;
+
+        &--square {
+            min-width: 0;
+            width: calcRem(12px);
+            height: calcRem(15px);
+
+            img {
+                max-width: calcRem(17px);
+            }
+        }
+
+        &.warn {
+            background-color: #ff0000c0;
+        }
+    }
+}
+
+.form {
+    &--form {
+        &-container {
+            @include center-content;
+            height: 75vh;
+            width: 100vw;
+
+            &.form {
+                flex-direction: column;
+            }
+
+            div {
+                &.auth {
+                    &-actions {
+                        @include center-content;
+                        justify-content: space-around;
+                    }
+                }
+
+                &.address {
+                    &-actions {
+                        @include center-content;
+                    }
+                }
+
+                &.form {
+                    &-group {
+                        @include center-content;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.center-content {
+    @include center-content;
+    flex-direction: column;
+}
+
+.center-align {
+    @include center-content;
+
+    &.links {
+        justify-content: flex-start;
+
+        a {
+            margin-right: calcRem(3px);
+        }
+    }
+}
+
+.dashboard {
+    &--header {
+        @include center-content;
+        height: 75vh;
+        width: 100vw;
+
+        h1 {
+            font-size: 4rem;
+        }
+    }
+}

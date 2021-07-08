@@ -1,30 +1,39 @@
 {
-  "npmScope": "demo-client",
-  "affected": {
-    "defaultBase": "master"
-  },
-  "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
+    "npmScope": "demo-client",
+    "affected": {
+        "defaultBase": "master"
     },
-    ".eslintrc.json": "*"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
-    }
-  },
-  "projects": {
-    "demo-client": {
-      "tags": []
+    "implicitDependencies": {
+        "package.json": {
+            "dependencies": "*",
+            "devDependencies": "*"
+        },
+        ".eslintrc.json": "*"
     },
-    "demo-client-e2e": {
-      "tags": [],
-      "implicitDependencies": ["demo-client"]
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "@nrwl/nx-cloud",
+            "options": {
+                "cacheableOperations": ["build", "lint", "test", "e2e"],
+                "accessToken": "M2EyZjA5YzgtMGRjYy00MGJmLWFiYTItNWZjMWI0ZWI2NTZjfHJlYWQtd3JpdGU=",
+                "canTrackAnalytics": false,
+                "showUsageWarnings": true
+            }
+        }
+    },
+    "projects": {
+        "demo-client": {
+            "tags": []
+        },
+        "demo-client-e2e": {
+            "tags": [],
+            "implicitDependencies": ["demo-client"]
+        },
+        "types": {
+            "tags": []
+        },
+        "ui": {
+            "tags": []
+        }
     }
-  }
 }
